@@ -1,0 +1,3 @@
+vagrant-node-server
+---
+
