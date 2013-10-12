@@ -1,0 +1,25 @@
+{
+  "mysql": {
+    "server_root_password": "rootpass",
+    "server_debian_password": "debpass",
+    "server_repl_password": "replpass"
+  },
+
+  "nodebrew": {
+    "nodes": [
+      { "version": "0.11.5", "binary": true },
+      { "version": "0.10.15", "binary": false }
+    ],
+    "use": "0.10.15",
+    "npm": {
+      "0.11.5": ["forever", "express", "sails"],
+      "0.10.15": [
+        "underscore",
+        "coffee-script",
+        "sails@0.9.7",
+        "async@0.2.9",
+        { "name": "bower", "version": "1.1.2", "action": "install" }
+       ]
+    }
+  }
+}

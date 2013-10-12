@@ -13,5 +13,14 @@ Gemfile.lock
 bin/*
 .bundle/*
 
+.DS_Store
+
+# IDE
+.idea
+## .etc
+
+# Environment
 chef.json
-server.json
+
+# Development
+vagrant.json
