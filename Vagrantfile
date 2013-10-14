@@ -94,4 +94,5 @@ Vagrant.configure("2") do |config|
 
   config.vm.provision :shell, :inline => "echo node-server start"
   config.vm.provision :shell, :path => "initiarize.sh"
+  
 end
