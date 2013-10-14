@@ -1,7 +1,7 @@
 {
   
   "vm": {
-		"hostname": "node-server",
+		"hostname": "ghost",
 		"box": "precise64",
 		"box_url": "http://files.vagrantup.com/precise64.box",
     "private_ip": "192.168.33.10",
