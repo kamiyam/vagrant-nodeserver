@@ -6,7 +6,7 @@ Vagrant.configure("2") do |config|
   # options are documented and commented below. For a complete reference,
   # please see the online documentation at vagrantup.com.
 
-  vagrant = JSON.parse(File.read("./vagrant.json"))
+  vagrant = JSON.parse(File.read("./config/vagrant.json"))
 
   config.vm.hostname = vagrant["vm"]["hostname"]
 
@@ -42,57 +42,58 @@ Vagrant.configure("2") do |config|
   config.vm.synced_folder vagrant["vm"]["synced_folder"]["base"], vagrant["vm"]["synced_folder"]["sync"],
   :create=> true, :owner=> 'vagrant', :group=> 'vagrant', :mount_options=> ['dmode=777, fmode=666']
 
-  # Example for VirtualBox:
-    config.vm.provider :virtualbox do |vb|
+  ## for VirtualBox:
+  config.vm.provider :virtualbox do |vb|
     # Don't boot with headless mode
     vb.gui = true
     # Use VBoxManage to customize the VM. For example to change memory:
     vb.customize ["modifyvm", :id, "--memory", "1024"]
   end
 
+  ## ssh setting
   config.ssh.max_tries = vagrant["ssh"]["max_tries"]
   config.ssh.timeout   = vagrant["ssh"]["timeout"]
 
-  # The path to the Berksfile to use with Vagrant Berkshelf
-  config.berkshelf.berksfile_path = vagrant["berkshelf"]["path"]
+  ## vagrant omnibus version set
+  config.omnibus.chef_version = vagrant["omnibus"]["chef_version"]
 
   # Enabling the Berkshelf plugin. To enable this globally, add this configuration
   # option to your ~/.vagrant.d/Vagrantfile file
   config.berkshelf.enabled = vagrant["berkshelf"]["enabled"]
 
+  # The path to the Berksfile to use with Vagrant Berkshelf
+  # config.berkshelf.berksfile_path = vagrant["berkshelf"]["path"]
+
   # An array of symbols representing groups of cookbook described in the Vagrantfile
   # to exclusively install and copy to Vagrant's shelf.
-  # config.berkshelf.only = []
+  # config.berkshelf.only = vagrant["berkshelf"]["only"]
 
   # An array of symbols representing groups of cookbook described in the Vagrantfile
   # to skip installing and copying to Vagrant's shelf.
-  # config.berkshelf.except = []
+  # config.berkshelf.except = vagrant["berkshelf"]["except"]
 
-  ## vagrant omnibus version set
-  config.omnibus.chef_version = vagrant["omnibus"]["chef_version"]
-
+  ## chef provisioning
   config.vm.provision :chef_solo do |chef|
 
-    chef.json = JSON.parse(File.read("./chef.json"))
-    # chef.json = {
+    # chef config load
+    chefConfig = JSON.parse(File.read("./config/chef.json")) 
 
-    #   # :mysql => {
-    #   #   :server_root_password => 'rootpass',
-    #   #   :server_debian_password => 'debpass',
-    #   #   :server_repl_password => 'replpass'
-    #   # },
-    # }
+    # cookbook path
+    chef.cookbooks_path = chefConfig["cookbooks_path"]
 
-    chef.run_list = [
-  		"recipe[apt]",
-  		"recipe[vim]",
-  		"recipe[git]",
-      "recipe[nodebrew]"
-    ]
+    # chef setup
+    chef.json = chefConfig["json"]
+
+    chef.run_list = chefConfig["run_list"]
+    
+    recipes = chefConfig["add_recipes"]
+    recipes.each{|recipe|
+      pchef.add_recipe recipe 
+    }
+
   end
 
-  config.vm.provision :shell, :inline => "echo node-server start"
-  config.vm.provision :shell, :path => "initiarize.sh"
-  config.vm.provision :shell, :inline => "npm start"
+  # config.vm.provision :shell, :inline => "echo node-server start"
+  # config.vm.provision :shell, :path => "/path/to/initiarize.sh"
 
 end

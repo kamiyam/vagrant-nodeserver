@@ -20,7 +20,8 @@ bin/*
 ## .etc
 
 # Environment
-chef.json
-
-# Development
+Vagrantfile
 vagrant.json
+!/config/vagrant.json
+chef.json
+!/config/chef.json

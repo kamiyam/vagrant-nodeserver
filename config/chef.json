@@ -1,0 +1,32 @@
+{
+  "cookbooks_path": [ "./cookbooks", "./site-cookbooks" ],
+  
+  "json": {
+    "nodebrew": {
+      "nodes": [
+        { "version": "0.11.5", "binary": true },
+        { "version": "0.10.15", "binary": false }
+      ],
+      "use": "0.10.15",
+      "npm": {
+        "0.11.5": ["forever", "express"],
+        "0.10.15": [
+          "underscore",
+          "coffee-script",
+          "async@0.2.9",
+          { "name": "bower", "version": "1.1.2", "action": "install" }
+         ]
+      }
+    }
+  },
+
+  "run_list": [
+    "recipe[apt]",
+    "recipe[vim]",
+    "recipe[git]",
+    "recipe[nodebrew]"
+  ],
+
+  "add_recipes": []
+
+}
