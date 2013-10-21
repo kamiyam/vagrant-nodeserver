@@ -5,12 +5,12 @@
     "nodebrew": {
       "nodes": [
         { "version": "0.11.5", "binary": true },
-        { "version": "0.10.15", "binary": false }
+        { "version": "0.10.21", "binary": false }
       ],
-      "use": "0.10.15",
+      "use": "0.10.21",
       "npm": {
         "0.11.5": ["forever", "express"],
-        "0.10.15": [
+        "0.10.21": [
           "underscore",
           "coffee-script",
           "async@0.2.9",
