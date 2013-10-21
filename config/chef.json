@@ -4,6 +4,21 @@
   "data_bags_path": "./data_bags",
 
   "json": {
+    // "users": [
+    //     { "name": "sample", "group": "sample_group" }
+    // ],
+    "authorization": {
+        "sudo": {
+            "groups": ["vagrant"],
+            "users": ["vagrant"],
+            "passwordless": true,
+            "sudoers_defaults": [
+                "env_reset",
+                "mail_badpass",
+                "secure_path=\"/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin\""
+            ]
+        }
+    },
     "nodebrew": {
       "nodes": [
         { "version": "0.11.5", "binary": true },
@@ -23,6 +38,8 @@
   },
 
   "run_list": [
+    // "users",
+    "sudo",
     "recipe[apt]",
     "recipe[vim]",
     "recipe[git]",
