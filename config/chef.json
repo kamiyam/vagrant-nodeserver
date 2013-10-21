@@ -1,6 +1,8 @@
 {
   "cookbooks_path": [ "./cookbooks", "./site-cookbooks" ],
-  
+
+  "data_bags_path": "./data_bags",
+
   "json": {
     "nodebrew": {
       "nodes": [

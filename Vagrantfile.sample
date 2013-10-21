@@ -81,6 +81,7 @@ Vagrant.configure("2") do |config|
 
     # cookbook path
     chef.cookbooks_path = chefConfig["cookbooks_path"]
+    chef.data_bags_path = chefConfig["data_bags_path"]
 
     # chef setup
     chef.json = chefConfig["json"]
