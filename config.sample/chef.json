@@ -1,0 +1,49 @@
+{
+
+  "run_list": [
+    "recipe[apt]",
+    "recipe[vim]",
+    "recipe[git]",
+    "recipe[nodebrew]",
+    "sudo",
+    "setup"
+  ],
+
+  "recipes": [],
+
+  "cookbooks_path": [ "./cookbooks", "./site-cookbooks", "./site-bundle-cookbooks" ],
+
+  "data_bags_path": "./data_bags",
+
+  "json": {
+
+    "authorization": {
+        "sudo": {
+            "groups": ["vagrant", "development"],
+            "users": ["vagrant", "node"],
+            "passwordless": true
+        }
+    },
+
+    "nodebrew": {
+      "nodes": [
+        { "version": "0.11.5", "binary": false },
+        { "version": "0.10.21", "binary": true }
+      ],
+      "use": "0.10.21",
+      "npm": {
+
+        "0.11.5": [
+          "underscore",
+          "coffee-script",
+          "async@0.2.9",
+          { "name": "bower", "version": "1.1.2", "action": "install" }
+        ],
+
+        "0.10.21": ["forever", "express", "sails", "coffee-script" ]
+
+      }
+    }
+  }
+
+}

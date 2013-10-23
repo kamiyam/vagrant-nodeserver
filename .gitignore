@@ -21,7 +21,4 @@ bin/*
 
 # Environment
 Vagrantfile
-vagrant.json
-!/config/vagrant.json
-chef.json
-!/config/chef.json
+/config

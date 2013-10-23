@@ -1,0 +1,9 @@
+{
+  "id": "node",
+  "password": "$1$3d.fOL9Z$1FS0tDcAFQB6xrXrF7vFU0",
+  "groups": [ "development" ],
+  "home": "/home/node",
+  "shell": "\/bin\/bash",
+  "comment": "Node process user",
+  "action": "create"
+}

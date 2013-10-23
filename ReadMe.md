@@ -3,11 +3,9 @@ vagrant-node-server
 
 # setup
 
-  $ cp Vagrantfile.sample Vagrantfile
-
-  $ vagrant up
-
-
+	$ cp Vagrantfile.sample Vagrantfile
+	$ cp config.sample config
+	$ vagrant up
 
 # extension
 

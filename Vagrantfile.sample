@@ -88,7 +88,7 @@ Vagrant.configure("2") do |config|
 
     chef.run_list = chefConfig["run_list"]
     
-    recipes = chefConfig["add_recipes"]
+    recipes = chefConfig["recipes"]
     recipes.each{|recipe|
       chef.add_recipe recipe 
     }
