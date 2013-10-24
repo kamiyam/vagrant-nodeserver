@@ -19,20 +19,20 @@ end
 
 ### package.json include
 template "#{node['node-simple-server']['server_dir']}/#{app_path}/package.json" do
+  not_if { File.exists?("#{node['node-simple-server']['server_dir']}/#{app_path}/package.json") }
   source   'package.json.erb'
   owner     node['node-simple-server']['owner']
   group   node['node-simple-server']['group']
   mode     '0664'
-  action [:nothing]
 end
 
 ### app.js include
 template "#{node['node-simple-server']['server_dir']}/#{app_path}/app.js" do
+  not_if { File.exists?("#{node['node-simple-server']['server_dir']}/#{app_path}/app.js") }
   source   'app.js.erb'
   owner     node['node-simple-server']['owner']
   group     node['node-simple-server']['group']
   mode     '0664'
-  action [:nothing]
 end
 
 nodebrew_npm 'forever'
