@@ -19,6 +19,8 @@ bin/*
 .idea
 ## .etc
 
-# Environment
+# Environment/Development
 Vagrantfile
 /config
+/src
+!/src/.gitkeep

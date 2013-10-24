@@ -1,0 +1,13 @@
+var http = require('http');
+
+// Create an HTTP server
+http.createServer(function (req, res) {
+
+  res.writeHead(200, {'Content-Type': 'text/plain'});
+  res.end('hello world');
+
+}).listen( <%= node['node-simple-server']['listen_ports'] %> , function(){
+
+  console.log( "start node-server listen: <%= node['node-simple-server']['listen_ports'] %>" )
+
+});
