@@ -12,11 +12,11 @@ user_ids.each do |id|
   u = data_bag_item('users', id)
   user u['id'] do
     username  u['username']
-    home      u['home']
+    home      "/home/#{id}"
     shell     u['shell']
     password  u['password']
     supports  :manage_home => true, :non_unique => false
-    action    [:create]
+    action    [:remove, :create]
   end
 end
 
@@ -26,6 +26,6 @@ group_ids.each do |id|
   group g['id'] do
     group_name g['group_name']
     members    g['members']
-    action     [:create]
+    action     [:create, :modify]
   end
 end

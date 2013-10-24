@@ -11,7 +11,7 @@
     },
     "synced_folder": {
       "base": "./src",
-      "sync": "/src"
+      "sync": "/var/node"
 		}
 	},
 

@@ -6,7 +6,8 @@
     "recipe[git]",
     "recipe[nodebrew]",
     "sudo",
-    "setup"
+    "setup",
+    "simple-server"
   ],
 
   "recipes": [],
@@ -43,7 +44,16 @@
         "0.10.21": ["forever", "express", "sails", "coffee-script" ]
 
       }
+    },
+
+    "node-simple-server": {
+      "apps": {
+        "scripts": {
+          "start": "sudo forever start -w app.js"
+        }
+      }
     }
+
   }
 
 }
