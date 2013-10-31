@@ -1,18 +1,23 @@
-vagrant-node-server
+# vagrant-node-server
 ---
 
-# setup
+## setup
+
+### Vagrant plugin
+
+- vagrant-berkshelf (1.3.3)
+- vagrant-omnibus (1.1.0)
+- vagrant-vbguest (0.9.0)
+
+### Run command
 
     $ cp Vagrantfile.sample Vagrantfile
     $ cp config.sample config
     $ vagrant up
 
-
 access to [http://localhost:4567](http://localhost:4567)
 
 "hello world" Sample Server is starting
-
-
 
 ## Attribute
 

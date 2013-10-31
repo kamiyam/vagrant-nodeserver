@@ -39,21 +39,18 @@ Vagrant.configure("2") do |config|
   # the path on the guest to mount the folder. And the optional third
   # argument is a set of non-required options.
   # config.vm.synced_folder "../data", "/vagrant_data"
-  config.vm.synced_folder vagrant["vm"]["synced_folder"]["base"], vagrant["vm"]["synced_folder"]["sync"],
-  :create=> true, :owner=> 'vagrant', :group=> 'vagrant', :mount_options=> ['dmode=777, fmode=666']
+  config.vm.synced_folder vagrant["vm"]["synced_folder"]["base"], vagrant["vm"]["synced_folder"]["sync"]
+  #, :create => true, :owner=> 'vagrant', :group=> 'vagrant', :mount_options=> ['dmode=777, fmode=666']
 
   ## for VirtualBox:
   config.vm.provider :virtualbox do |vb|
     # Don't boot with headless mode
-    vb.gui = true
-    #  vb.name = vagrant["vm"]["hostname"]
+    # vb.gui = true
+    vb.name = vagrant["vm"]["hostname"]
     # Use VBoxManage to customize the VM. For example to change memory:
     vb.customize ["modifyvm", :id, "--memory", "1024"]
-  end
 
-  ## ssh setting
-  config.ssh.max_tries = vagrant["ssh"]["max_tries"]
-  config.ssh.timeout   = vagrant["ssh"]["timeout"]
+  end
 
   ## vagrant omnibus version set
   config.omnibus.chef_version = vagrant["omnibus"]["chef_version"]
@@ -95,7 +92,7 @@ Vagrant.configure("2") do |config|
 
   end
 
-#  config.vm.provision :shell, :path => "./config/initialize.sh"
-#  config.vm.provision :shell, :inline => "echo node-server start"
+ config.vm.provision :shell, :path => "./config/initialize.sh"
+ config.vm.provision :shell, :inline => "echo node-server start"
 
 end

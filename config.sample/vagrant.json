@@ -15,11 +15,6 @@
 		}
 	},
 
-  "ssh": {
-    "max_tries": 40,
-    "timeout": 120
-	},
-
   "omnibus": {
     "chef_version": "11.6.0"
 	},
