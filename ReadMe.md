@@ -51,3 +51,7 @@ access to [http://localhost:4567](http://localhost:4567)
 
 If you want to install their own original recipe, and place to site-cookbooks
 
+## Change log
+
+- 0.0.2 Node.js update(v0.10.24)
+- 0.0.1
