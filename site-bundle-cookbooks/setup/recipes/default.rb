@@ -29,3 +29,8 @@ group_ids.each do |id|
     action     [:create, :modify]
   end
 end
+
+# Install the unzip package
+package "unzip" do
+  action :install
+end
